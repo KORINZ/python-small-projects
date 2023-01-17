@@ -1,3 +1,6 @@
+"""A deductive logic game where you must guess a number based on clues.
+Tags: short, game, puzzle"""
+
 import random
 
 NUM_DIGITS = 3
