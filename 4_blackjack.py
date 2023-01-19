@@ -134,7 +134,7 @@ def getBet(money: int) -> int:
             return bet  # Player entered a valid bet.
 
 
-def getDeck() -> List[Tuple]:
+def getDeck() -> List[Union[Tuple, str]]:
     """Return a list of (rank, suit) tuples for all 52 cards."""
     deck = []
     for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
@@ -146,7 +146,7 @@ def getDeck() -> List[Tuple]:
     return deck
 
 
-def displayHands(player_hand: List[Tuple], dealer_hand: List[Union[Tuple, str]], show_dealer_hand: bool) -> None:
+def displayHands(player_hand: List[Tuple], dealer_hand: List[str], show_dealer_hand: bool) -> None:
     """Show the player's and dealer's cards. Hide the dealer's first
     card if showDealerHand is False."""
     print()
@@ -163,7 +163,7 @@ def displayHands(player_hand: List[Tuple], dealer_hand: List[Union[Tuple, str]],
     displayCards(player_hand)
 
 
-def getHandValue(cards):
+def getHandValue(cards: List[Union[Tuple, str]]) -> int:
     """Returns the value of the cards. Face cards are worth 10, aces are
     worth 11 or 1 (this function picks the most suitable ace value)."""
     value = 0
@@ -189,7 +189,7 @@ def getHandValue(cards):
     return value
 
 
-def displayCards(cards):
+def displayCards(cards: List[Union[Tuple, str]]) -> None:
     """Display all the cards in the cards list."""
     rows = ['', '', '', '', '']  # The text to display on each row.
 
@@ -212,7 +212,7 @@ def displayCards(cards):
         print(row)
 
 
-def getMove(player_hand, money):
+def getMove(player_hand: List[Tuple], money: int) -> str:
     """Asks the player for their move, and returns 'H' for hit, 'S' for
     stand, and 'D' for double down."""
     while True:  # Keep looping until the player enters a correct move.
